@@ -1,12 +1,13 @@
 [project]
-name = "example_project"
-version = "0.1"
+name = "wbe"
+version = "0.1a"
 authors = [
     {name = "David Shipman", email= "david.shipman@monash.edu"}
 ]
 requires-python = ">=3.10"
 dependencies = [
-]
+    "numpy",
+    "pandas"]
 
 [build-system]
 requires = ["hatchling"]
@@ -14,4 +15,3 @@ build-backend = "hatchling.build"
 
 [tool.hatch.metadata]
 allow-direct-references = true
-

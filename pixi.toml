@@ -13,7 +13,7 @@ jupyterlab = ">=4.5.6,<5"
 
 [pypi-dependencies]
 summer3 = { git = "https://github.com/monash-emu/summer3wip.git" }
-example_project = { path = "src/example_project", editable = true }
+wbe = { path = "src/wbe", editable = true }
 arviz = "==0.23.4"
 plotly = ">=6.6.0, <7"
 ipywidgets = ">=8.1.8, <9"
@@ -22,4 +22,6 @@ jax = ">=0.9"
 jaxlib = ">=0.9"
 diffrax = ">=0.7.2, <0.8"
 numpyro = ">=0.20.0, <0.21"
+gitpython = ">=3.1.46, <4"
+jupyterlab-git = ">=0.52.0, <0.53"
 
