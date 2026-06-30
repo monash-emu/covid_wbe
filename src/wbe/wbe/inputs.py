@@ -5,6 +5,13 @@ import numpy as np
 import pandas as pd
 from wbe.constants import DATA_PATH, GROUP_VARS
 
+def get_population(fips: str, est_year: int = 2020) -> float:
+    df_pop = pd.read_csv(DATA_PATH / "co-est2025-alldata.csv", dtype={"STATE": str, "COUNTY": str})
+    state_code, county_code = fips[:2], fips[2:]
+    pop_state = df_pop[df_pop["STATE"] == state_code]
+    pop_county = pop_state[pop_state["COUNTY"] == county_code]
+    est_column = f"POPESTIMATE{est_year}"
+    return pop_county[est_column].values[0]
 
 def get_storage_metadata() -> Tuple[str]:
     """Get the standard metadata for inclusion in data filenames.
@@ -162,3 +169,21 @@ def group_data(
     grouped_obs.index = grouped_obs["sample_collect_date"]
     cols = [c for c in grouped_obs.columns if c != "sample_collect_date"]
     return grouped_obs[cols]
+
+class ObsProvider:
+    def __init__(self, data):
+        self.data = data
+        self.fips = data["fips"].unique()
+        self.sewershed_id = data["sewershed_id"].unique()
+
+    def subset_by(self, col, val):
+        return self.data[self.data[col]==val]
+
+def get_liquid_obs_provider() -> ObsProvider:
+    filename = "cdc_data_d20260225_t222606_sha6fc34cc.csv"
+    data = pd.read_csv(DATA_PATH / "wbe" / filename, parse_dates=["sample_collect_date"])
+    data = split_concentration_var(data)
+
+    liquid_data = data[data["liquid_pcr_conc"].notna()].copy()
+    liquid_obs = group_data("liquid", liquid_data)
+    return ObsProvider(liquid_obs)
