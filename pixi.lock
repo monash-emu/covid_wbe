@@ -221,6 +221,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/51/c0/00c9809d8b9346eb238a6bbd5f83e846a4ce4503da94a4c08cb7284c325b/multipledispatch-1.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/52/d2/c6e44dba74f17c6216ce1b56044a9b93a929f1c2d5bdaff892512b260f5e/plotly-6.6.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/56/6d/0d9848617b9f753b87f214f1c682592f7ca42de085f564352f10f0843026/ipywidgets-8.1.8-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/58/0a/a10b45aab35b175aded078a462dc8d0c698f5b13946e7cb0869097b78bb6/absl_py-2.5.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/60/dd/75a852b276f29e131c33083cb57dfaf3996c94ac2e07b1c90cf5950b7505/nbdime-4.0.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/63/53/6a81a6ebb1739f19c32002139719d4ee021a349d5bdbe066910feed327a1/optimistix-0.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/09/e21df6aef1e1ffc0c816f0522ddc3f6dcded766c3261813131c78a704470/gitpython-3.1.46-py3-none-any.whl
@@ -229,6 +230,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/80/0c/2ed47112fc1958a0a81c9b015d4e1861953a1ec3a17b081c0180a25ce82c/lineax-0.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/80/e4/88778c6a23b65224e5088e68fd0924e5bde2196a26e76edb3ea3543fed6a/jax-0.9.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/82/c7/985c1670aa6d82ef270f04cde11394c168f2002700353bd2bde405e59b8f/fonttools-4.62.0-cp313-cp313-macosx_10_13_universal2.whl
+      - pypi: https://files.pythonhosted.org/packages/8a/69/6a93d8600c339d7687a05857c7907bd4dd8cf88691a5ea106d7a50af90a1/optax-0.2.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/8d/96/04e7b441807b26b794da5b11e59ed7f83b2cf8af202bd7eba8ad2fa6046e/wadler_lindig-0.1.7-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/8d/a0/2ba3473c1b66b9c74dc7107c67e9008cb1782edbe896d4c899d39ae9cf78/matplotlib-3.10.8-cp313-cp313-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/94/05/3e39d416fb92b2738a76e8265e6bfc5d10542f90a7c32ad1eb831eea3fa3/jaxtyping-0.3.9-py3-none-any.whl
@@ -3334,6 +3336,11 @@ packages:
   - pytest-cov ; extra == 'test'
   - pytz ; extra == 'test'
   requires_python: '>=3.7'
+- pypi: https://files.pythonhosted.org/packages/58/0a/a10b45aab35b175aded078a462dc8d0c698f5b13946e7cb0869097b78bb6/absl_py-2.5.0-py3-none-any.whl
+  name: absl-py
+  version: 2.5.0
+  sha256: 0f17b89f2a4eaaedc4f28c622998aa690564b3012a396a4ffad0821007fe03ba
+  requires_python: '>=3.10'
 - pypi: https://files.pythonhosted.org/packages/60/dd/75a852b276f29e131c33083cb57dfaf3996c94ac2e07b1c90cf5950b7505/nbdime-4.0.4-py3-none-any.whl
   name: nbdime
   version: 4.0.4
@@ -3577,6 +3584,31 @@ packages:
   - xattr ; sys_platform == 'darwin' and extra == 'all'
   - skia-pathops>=0.5.0 ; extra == 'all'
   - uharfbuzz>=0.45.0 ; extra == 'all'
+  requires_python: '>=3.10'
+- pypi: https://files.pythonhosted.org/packages/8a/69/6a93d8600c339d7687a05857c7907bd4dd8cf88691a5ea106d7a50af90a1/optax-0.2.8-py3-none-any.whl
+  name: optax
+  version: 0.2.8
+  sha256: e3ca2d36c99daab1800ae9dbc0545034382d6bc780b24d969e1b0df65fa31cb4
+  requires_dist:
+  - absl-py>=0.7.1
+  - jax>=0.5.3
+  - jaxlib>=0.5.3
+  - numpy>=1.18.0
+  - sphinx>=6.0.0 ; extra == 'docs'
+  - sphinx-book-theme>=1.0.1 ; extra == 'docs'
+  - sphinxcontrib-katex ; extra == 'docs'
+  - sphinx-autodoc-typehints ; extra == 'docs'
+  - ipython>=8.8.0 ; extra == 'docs'
+  - myst-nb>=1.0.0 ; extra == 'docs'
+  - matplotlib>=3.5.0 ; extra == 'docs'
+  - sphinx-gallery>=0.14.0 ; extra == 'docs'
+  - sphinx-collections>=0.0.1 ; extra == 'docs'
+  - flax ; extra == 'docs'
+  - sphinx-contributors ; extra == 'docs'
+  - setuptools ; extra == 'docs'
+  - flax>=0.5.3 ; extra == 'test'
+  - scipy>=1.7.1 ; extra == 'test'
+  - scikit-learn ; extra == 'test'
   requires_python: '>=3.10'
 - pypi: https://files.pythonhosted.org/packages/8d/96/04e7b441807b26b794da5b11e59ed7f83b2cf8af202bd7eba8ad2fa6046e/wadler_lindig-0.1.7-py3-none-any.whl
   name: wadler-lindig
